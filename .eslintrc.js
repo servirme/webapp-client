@@ -1,20 +1,11 @@
 module.exports = {
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
+    globals: {
+      "it": true,
     },
-    "env": {
-        "es6": true,
-        "node": true,
-        "browser": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
-    // "extends": "matheusvellone-base/frontend"
-    "plugins": [
-      "react"
-    ]
+    extends: [
+        "matheusvellone-base/react",
+    ],
+    "rules": {
+      "indent": ["error", 2]
+    }
 };
