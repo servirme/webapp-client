@@ -1,28 +1,96 @@
-.wrap {
+.html, .body {
+  height:100%
+}
+
+.body {
+  background: url("https://servirme.s3.amazonaws.com/landing-page/food.png") no-repeat center center fixed;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  & > div {
+    height: 100%;
+    & > div {
+      height: 100%;
+      & > div {
+        height: 100%;
+        & > div {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.landingContainer {
+  color: #ffffff;
+  margin: auto;
   text-align: center;
 }
 
-.logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.landingText {
+  font-size: 40px;
+  font-weight: 100;
+
+  & > .bold {
+    font-weight: 900;
+  }
 }
 
-.header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.dot {
+  color: #4a374f;
 }
 
-.title {
-  font-size: 1.5em;
+.head {
+  font-family: Pacifico, sans-serif;
+  font-size: 120px;
 }
 
-.intro {
-  font-size: large;
+.hr {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  line-height: 1px;
+  height: 1px;
+  font-size: 1em;
+  margin: 20px 10px;
+
+  &:before {
+    margin-right: 10px;
+    left: 0;
+  }
+
+  &:after {
+    margin-left: 10px;
+  }
+  &:before, &:after {
+    content: '';
+    border-top: 4px double #FFFFFF;
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    padding: 0 150px;
+    background: #FFFFFF;
+    font-size: 18px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.footerContact {
+  position: absolute;
+  font-size: 20px;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+
+  a {
+    color: #FFFFFF;
+  }
 }
