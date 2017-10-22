@@ -1,11 +1,12 @@
 module.exports = {
     globals: {
-      "it": true,
+      it: true,
+      describe: true,
     },
     extends: [
-        "matheusvellone-base/react",
+        'matheusvellone-base/react',
     ],
-    "rules": {
-      "indent": ["error", 2]
+    rules: {
+      indent: ['error', 2]
     }
 };
