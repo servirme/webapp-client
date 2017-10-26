@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 
 const Home = () => {
@@ -14,9 +15,11 @@ const Home = () => {
         <div className={ styles.head }>
           Servir<span className={ styles.dot }>.</span>me
         </div>
-        <div className={ styles.hr }>
-          <img src="https://servirme.s3.amazonaws.com/landing-page/bell-icon.png"/>
-        </div>
+        <Link to="/admin">
+          <div className={ styles.hr }>
+            <img src="https://servirme.s3.amazonaws.com/landing-page/bell-icon.png"/>
+          </div>
+        </Link>
         <br/>
         <p className={ styles.landingText }>
           O prazer em&nbsp;

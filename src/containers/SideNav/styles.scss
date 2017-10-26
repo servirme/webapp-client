@@ -1,0 +1,16 @@
+.list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 200px;
+  height: 100%;
+}
+
+.logo {
+  height: 10%;
+  a {
+    background: -webkit-linear-gradient(#d17d81, #f7b87b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

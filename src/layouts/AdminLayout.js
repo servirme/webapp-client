@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SideNav from '../containers/SideNav';
+import AdminContent from '../containers/AdminContent';
+
 const AdminLayout = ({ children }) => {
   return (
     <div>
-      <h1>Layout Admin</h1>
-      { children }
+      <SideNav/>
+      <AdminContent>
+        { children }
+      </AdminContent>
     </div>
   );
 };
