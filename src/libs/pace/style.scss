@@ -1,0 +1,13 @@
+$pace-color: #33aaff;
+
+:global {
+  .content-loaded {
+    @import './themes/minimal';
+  }
+
+  .content-loading {
+    // TODO - use loading on first load
+    @import './themes/minimal';
+    //@import './themes/loading-bar';
+  }
+}

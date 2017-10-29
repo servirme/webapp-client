@@ -1,23 +1,22 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import styles from './styles.scss';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import Link from '@/components/Link'
+import styles from './styles.scss'
 
 const Home = () => {
   return (
     <div className={ styles.container }>
       <Helmet>
-        <html className={ styles.html }/>
         <body className={ styles.body }/>
-        <link href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100, 900" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico|Raleway:100, 900' rel='stylesheet'/>
       </Helmet>
       <div className={ styles.landingContainer }>
         <div className={ styles.head }>
           Servir<span className={ styles.dot }>.</span>me
         </div>
-        <Link to="/admin">
+        <Link to='/admin'>
           <div className={ styles.hr }>
-            <img src="https://servirme.s3.amazonaws.com/landing-page/bell-icon.png"/>
+            <img src='https://servirme.s3.amazonaws.com/landing-page/bell-icon.png'/>
           </div>
         </Link>
         <br/>
@@ -28,10 +27,10 @@ const Home = () => {
       </div>
 
       <div className={ styles.footerContact }>
-        Para maiores informações, entre em contato: <a href="mailto:contato@servir.me">contato@servir.me</a>
+        Para maiores informações, entre em contato: <a href='mailto:contato@servir.me'>contato@servir.me</a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

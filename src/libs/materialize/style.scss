@@ -1,0 +1,26 @@
+$roboto-font-path: '~materialize-css/dist/fonts/roboto/';
+
+@import '~materialize-css/sass/components/color';
+
+$primary-color: color('amber', 'darken-4') !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color('red', 'lighten-1') !default;
+$success-color: color('deep-orange', 'base') !default;
+$error-color: color('red', 'base') !default;
+$link-color: color('light-blue', 'darken-1') !default;
+
+:global {
+  @import '~materialize-css/sass/materialize';
+
+  .waves-effect {
+    &.waves-primary .waves-ripple {
+      background-color: transparentize($primary-color, 0.70);
+    }
+    &.waves-secondary .waves-ripple {
+      background-color: transparentize($primary-color, 0.70);
+    }
+  }
+}
+
