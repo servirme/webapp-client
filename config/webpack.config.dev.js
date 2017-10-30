@@ -1,26 +1,61 @@
-const autoprefixer = require('autoprefixer');
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const merge = require('webpack-merge');
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
+const eslintFormatter = require('react-dev-utils/eslintFormatter')
+const merge = require('webpack-merge')
 
-const commonConfig = require('./webpack.config.common');
-const getClientEnvironment = require('./env');
-const paths = require('./paths');
+const commonConfig = require('./webpack.config.common')
+const getClientEnvironment = require('./env')
+const paths = require('./paths')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
-const publicPath = '/';
+const publicPath = '/'
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-const publicUrl = '';
+const publicUrl = ''
 // Get environment variables to inject into our app.
-const env = getClientEnvironment(publicUrl);
+const env = getClientEnvironment(publicUrl)
+
+const loaders = {
+  css: (loadAsGlobal) => {
+    return {
+      loader: require.resolve('css-loader'),
+      options: {
+        importLoaders: 1,
+        modules: loadAsGlobal,
+        localIdentName: loadAsGlobal ? '[local]' : '[name]_[local]_[hash:base64:5]',
+      },
+    }
+  },
+  postCss: {
+    loader: require.resolve('postcss-loader'),
+    options: {
+      // Necessary for external CSS imports to work
+      // https://github.com/facebookincubator/create-react-app/issues/2677
+      ident: 'postcss',
+      plugins: () => {
+        return [
+          require('postcss-flexbugs-fixes'),
+          autoprefixer({
+            browsers: [
+              '>1%',
+              'last 4 versions',
+              'Firefox ESR',
+              'not ie < 9', // React doesn't support IE8 anyway
+            ],
+            flexbox: 'no-2009',
+          }),
+        ]
+      },
+    },
+  },
+}
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -66,7 +101,7 @@ module.exports = merge(commonConfig, {
     // This is the URL that app is served from. We use "/" in development.
     publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: (info) => { return path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'); },
+    devtoolModuleFilenameTemplate: (info) => { return path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') },
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -138,41 +173,22 @@ module.exports = merge(commonConfig, {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.s[ac]ss$/,
+            include: /node_modules/,
             use: [
               require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1,
-                  modules: true,
-                  localIdentName: '[name]_[local]_[hash:base64:5]',
-                },
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  // Necessary for external CSS imports to work
-                  // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident: 'postcss',
-                  plugins: () => {
-                    return [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9', // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009',
-                      }),
-                    ];
-                  },
-                },
-              },
-              {
-                loader: require.resolve('sass-loader'),
-              },
+              loaders.css(true),
+              loaders.postCss,
+              require.resolve('sass-loader'),
+            ],
+          },
+          {
+            test: /\.s[ac]ss$/,
+            exclude: /node_modules/,
+            use: [
+              require.resolve('style-loader'),
+              loaders.css(false),
+              loaders.postCss,
+              require.resolve('sass-loader'),
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -237,4 +253,4 @@ module.exports = merge(commonConfig, {
   performance: {
     hints: false,
   },
-});
+})

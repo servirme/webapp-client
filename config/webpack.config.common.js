@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const webpack = require('webpack')
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 
-const paths = require('./paths');
+const paths = require('./paths')
 
 module.exports = {
   // entry: [
@@ -36,6 +36,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
+      Waves: 'node-waves',
     }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
@@ -47,4 +48,4 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
-};
+}

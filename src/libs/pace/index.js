@@ -7,8 +7,8 @@ window.paceOptions = {
 }
 import Pace from 'pace-progress' // eslint-disable-line import/first
 
+// TODO - use admin theme page loader for first loader ?
 Pace.once('hide', () => {
-  console.log('done!')
   $('body')
     .removeClass('content-loading')
     .addClass('content-loaded')

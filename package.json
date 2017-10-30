@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "dotenv": "4.0.0",
     "jquery": "^3.2.1",
     "materialize-css": "^0.100.2",
+    "node-waves": "^0.7.5",
     "pace-progress": "^1.0.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -103,8 +105,5 @@
     "presets": [
       "react-app"
     ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }

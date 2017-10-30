@@ -11,9 +11,9 @@ $success-color: color('deep-orange', 'base') !default;
 $error-color: color('red', 'base') !default;
 $link-color: color('light-blue', 'darken-1') !default;
 
-:global {
-  @import '~materialize-css/sass/materialize';
+@import '~materialize-css/sass/materialize';
 
+:global {
   .waves-effect {
     &.waves-primary .waves-ripple {
       background-color: transparentize($primary-color, 0.70);

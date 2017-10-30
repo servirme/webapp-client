@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import { createStore } from 'redux'
 import classNames from 'classnames'
 
-import './libs/index'
+import './libs'
 
 import reducers from './reducers'
 import AppRouter from './router'
