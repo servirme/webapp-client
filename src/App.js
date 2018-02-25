@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import './setup'
+import AppRouter from './router'
+import reducers, { initialState } from './store/reducers'
+import SplashScreen from './components/SplashScreen'
 
-export default App;
+const store = createStore(
+  reducers,
+  initialState
+)
+
+const domain = window.location.hostname
+
+const App = () => (
+  <Provider store={store}>
+    <SplashScreen domain={domain}>
+      <BrowserRouter>
+        <AppRouter/>
+      </BrowserRouter>
+    </SplashScreen>
+  </Provider>
+)
+
+export default App
