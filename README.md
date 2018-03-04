@@ -1,6 +1,7 @@
 [Servir.me](https://github.com/MatheusVellone/servir.me) WebApp Client
 -----------------
 
+[![Build Status](https://travis-ci.org/servirme/webapp-client.svg?branch=master)](https://travis-ci.org/servirme/webapp-client) [![Coverage Status](https://coveralls.io/repos/github/servirme/webapp-client/badge.svg?branch=master)](https://coveralls.io/github/servirme/webapp-client?branch=master)
 ## Table of Contents
 
 - [Updating to New Releases](#updating-to-new-releases)
