@@ -19,7 +19,7 @@ const App = () => (
   <Provider store={store}>
     <SplashScreen domain={domain}>
       <BrowserRouter>
-        <AppRouter/>
+        <AppRouter />
       </BrowserRouter>
     </SplashScreen>
   </Provider>
