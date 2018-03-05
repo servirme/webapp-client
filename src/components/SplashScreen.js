@@ -6,6 +6,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 
 import withRoot from '../withRoot'
+import loadEstabilishmentData from '../store/actions/control'
 
 const styles = () => ({
   root: {
@@ -14,6 +15,15 @@ const styles = () => ({
 })
 
 class SplashScreen extends Component {
+  loadEstabilishment = () => {
+    const { loadEstabilishment, domain } = this.props
+    loadEstabilishment(domain)
+  }
+
+  componentDidMount() {
+    this.loadEstabilishment()
+  }
+
   render() {
     const { isLoading } = this.props
 
@@ -37,6 +47,7 @@ SplashScreen.propTypes = {
   classes: PropTypes.object.isRequired,
   domain: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  loadEstabilishment: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 }
 
@@ -44,4 +55,11 @@ const mapStateToProps = applySpec({
   isLoading: path(['control', 'loading']),
 })
 
-export default withRoot(withStyles(styles)(connect(mapStateToProps)(SplashScreen)))
+const mapDispatchToProps = applySpec({
+  loadEstabilishment: loadEstabilishmentData,
+})
+
+export default withRoot(withStyles(styles)(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SplashScreen)))

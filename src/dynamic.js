@@ -16,9 +16,9 @@ const createManifest = pipe(
     theme_color: always('#0f4a73'),
     icons: [
       {
-        src: prop('logo_url'),
-        sizes: '256x256',
-        type: 'image/png',
+        src: prop('logoUrl'),
+        sizes: always('256x256'),
+        type: always('image/png'),
       },
     ],
   }),
@@ -31,6 +31,6 @@ export default (estabilishment) => {
   const blob = new Blob([manifest], { type: 'application/javascript' })
   const manifestURL = URL.createObjectURL(blob)
   document.querySelector('#manifest').setAttribute('href', manifestURL)
-  document.querySelector('#favicon').setAttribute('href', estabilishment.favicon_url)
+  document.querySelector('#favicon').setAttribute('href', estabilishment.faviconUrl)
 }
 

@@ -1,9 +1,10 @@
 import baseReducer from './helpers/base'
 import FINISHED_LOADING from '../actionTypes/control'
 
-const onFinishLoading = state => ({
+const onFinishLoading = (state, { estabilishment }) => ({
   ...state,
   loading: false,
+  estabilishment,
 })
 
 const reducers = {
@@ -12,6 +13,7 @@ const reducers = {
 
 const controlInitialState = {
   loading: true,
+  estabilishment: {},
 }
 
 export default baseReducer(reducers, controlInitialState)
